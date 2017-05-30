@@ -20,28 +20,18 @@ else
 fi
 cd "$DEFAULTDIR"
 
-wget -q https://raw.githubusercontent.com/mit-racecar/racecar/master/racecar.rosinstall -O ~/"$DEFAULTDIR"/.rosinstall
+wget -q https://raw.githubusercontent.com/mit-racecar/racecar/master/racecar.rosinstall -O "$DEFAULTDIR"/.rosinstall
 
 wstool update
 
 # Install prerequisite packages
 echo "Installing prerequisites"
+source devel/setup.bash
+# Install the rosdeps -a = all -y = no questions -r = skip errors (for openCV in ZED_Wrapper)
+rosdep install -a -y -r
 # jstest-gtk is added for testing the joystick
 sudo apt-get -y install \
-    libyaml-cpp-dev \
     jstest-gtk \
-    ros-kinetic-razor_imu_9dof \
-    ros-kinetic-tf \
-    ros-kinetic-tf2_ros \
-    ros-kinetic-urg_node \
-    ros-kinetic-joy \
-    ros-kinetic-joy_teleop \
-    ros-kinetic-rosbag \
-    ros-kinetic-rostopic \
-    ros-kinetic-rviz \
-    ros-kinetic-gmapping \
-    ros-kinetic-hector_mapping \
-    ros-kinetic-robot_pose_ekf
 
 echo "Catkin Make"
 catkin_make
