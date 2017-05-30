@@ -31,7 +31,7 @@ source devel/setup.bash
 rosdep install -a -y -r
 # jstest-gtk is added for testing the joystick
 sudo apt-get -y install \
-    jstest-gtk \
+    jstest-gtk 
 
 echo "Catkin Make"
 catkin_make
