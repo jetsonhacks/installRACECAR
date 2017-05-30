@@ -36,5 +36,6 @@ sudo apt-get -y install \
 echo "Catkin Make"
 # On the Jetson, there's currently an issue with using the dynamic runtime
 # Typically this reports as "cannot find -lopencv_dep_cudart" in the error log
-catkin_make --cmake-args=CUDA_USE_STATIC_CUDA_RUNTIME=OF
+catkin_make config --cmake-args -DCUDA_USE_STATIC_CUDA_RUNTIME=OFF
+catkin_make
 
